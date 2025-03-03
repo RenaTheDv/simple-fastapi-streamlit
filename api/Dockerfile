@@ -5,14 +5,13 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Копируем файл с требованиями из папки api в контейнер
-COPY ./requirements.txt /app/requirements.txt
+COPY requirements.txt /app/requirements.txt
 
 # Устанавливаем зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Копируем все файлы из папки api в рабочую директорию контейнера
-COPY ./utils /app/utils
-COPY ./weights /app/weights
+COPY . /app
 
 # Открываем порт, на котором будет работать FastAPI
 EXPOSE 8000
