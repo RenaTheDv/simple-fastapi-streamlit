@@ -1,17 +1,17 @@
 # Используем официальный Python образ
-FROM python:3.9-slim
+FROM python:3.12-slim
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
 # Копируем требования
-COPY ./front/requirements.txt /app/requirements.txt
+COPY requirements.txt /app/requirements.txt
 
 # Устанавливаем зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Копируем весь проект в контейнер
-COPY ./front /app
+COPY . /app
 
 # Открываем порт, на котором будет работать Streamlit
 EXPOSE 8501
